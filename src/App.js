@@ -1,14 +1,19 @@
 import React from 'react';
 import './App.css';
-import SearchBar from './components/SearchBar'
-import SignUp from './containers/signup_container'
-function App() {
-  return (
-    <div>
-    <div>App</div>
-    <SignUp />
-    <SearchBar />
-    </div>
-    );
+
+import SignUpContainer from './container/signup_container'
+class App extends React.Component {
+  state = {  }
+  render() { 
+    return (
+      <div>
+      <div>App</div>
+      <SignUpContainer />
+    
+      </div>
+      );
+  }  
 }
+
+ 
 export default App;
