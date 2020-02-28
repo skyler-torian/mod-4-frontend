@@ -1,18 +1,18 @@
 import React from 'react';
 import './App.css';
-import SearchBar from './components/SearchBar'
+import HomeContainer from './containers/Home_Container';
 import Login from './containers/Login'
 import Sidebar from './components/Sidebar'
 import SearchResults from './components/SearchResults'
-import SignUpContainer from './container/signup_container'
+import SignUpContainer from './containers/signup_container'
 
 function App() {
   return (
     <div>
-    <div>App</div>
+    <div className ='App'></div>
     <SignUpContainer />
     <Login />
-    <SearchBar />
+    <HomeContainer />
     <Sidebar />
     <SearchResults />
     </div>
