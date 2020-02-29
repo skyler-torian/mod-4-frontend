@@ -4,8 +4,14 @@ class Sidebar extends React.Component {
     render() {
         return(
             <div>
-            <div>Artists</div>
-            <div>Songs</div>
+                <div>
+                    <button     class="button">Artists
+                    </button>
+                </div>
+                <div>
+                    <button class="button">Songs
+                    </button>
+                </div>
             </div>
         )
     }
