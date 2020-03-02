@@ -5,11 +5,11 @@ class Sidebar extends React.Component {
         return(
             <div>
                 <div>
-                    <button class="button">Artists
+                    <button className="button">Artists
                     </button>
                 </div>
                 <div>
-                    <button class="button">Songs
+                    <button className="button">Songs
                     </button>
                 </div>
             </div>
