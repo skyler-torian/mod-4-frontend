@@ -5,7 +5,7 @@ class Sidebar extends React.Component {
         return(
             <div>
                 <div>
-                    <button     class="button">Artists
+                    <button class="button">Artists
                     </button>
                 </div>
                 <div>
