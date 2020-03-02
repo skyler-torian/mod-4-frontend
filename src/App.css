@@ -2,7 +2,7 @@
   text-align: center;
 }
 html{
-  background-color: #191820;
+  background-color: #514f5c;
 }
 
 .song-card{
@@ -18,12 +18,12 @@ html{
 }
 
 .artist{
-  color: rgb(64, 66, 95);
+  color: rgb(255, 255, 255);
 }
 
 .cover-art{
-    justify-self: center;
-    height: 70px;
+    justify-self: auto;
+    height: 100px;
     width: auto;
   
 
