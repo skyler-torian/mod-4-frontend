@@ -16,7 +16,8 @@ class App extends React.Component {
   }
 
   searchHandler = (event) => {
-    console.log(event.target.value)
+    this.setState({
+      searchText: event.target.value})
   }
 
 
