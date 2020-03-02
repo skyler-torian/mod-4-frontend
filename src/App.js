@@ -41,7 +41,7 @@ componentDidMount(){
       <Login />
       <HomeContainer songsArray={this.state.songsArray} searchHandler={this.searchHandler}/>
       <Sidebar />
-      <SearchResults />
+      <SearchResults searchHandler={this.searchHandler}/>
     </div>
     );
   }
