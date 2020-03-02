@@ -7,6 +7,8 @@ import SearchResults from './components/SearchResults'
 import SignUpContainer from './containers/signup_container'
 
 function App() {
+
+ 
   return (
     <div>
     <div className ='App'></div>
