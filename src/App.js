@@ -3,13 +3,13 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  Redirect
 } from "react-router-dom";
 import './App.css';
 import HomeContainer from './containers/HomeContainer';
 import Login from './containers/Login'
 import Sidebar from './components/Sidebar'
-import SearchResults from './components/SearchResults'
 
 import SignUpContainer from './containers/SignupContainer'
 
@@ -17,14 +17,14 @@ class App extends React.Component {
 
   state ={
     songsArray:[],
-    
+    searchedSongs:null,
     searchText: ""
-
   }
 
   searchHandler = (event) => {
     event.preventDefault()
-    // this.setState({
+
+        // this.setState({
     //   searchText:
     // })
     let searchValue = event.target.firstElementChild.value
@@ -38,9 +38,13 @@ class App extends React.Component {
               })
               
               .then(response => response.json())
-              .then(data => console.log(data))
+              .then(response => {
+                
+                this.setState({
+                searchedSongs: response.data
+              })})
               
-              }
+   }
   
 
 
@@ -68,15 +72,20 @@ componentDidMount(){
           </Route>
 
           <Route path ="/home"> 
-            <HomeContainer songsArray={this.state.songsArray} searchHandler={this.searchHandler}/>
+          
+            <HomeContainer songState={this.state} searchHandler={this.searchHandler}/>
           </Route>
+         
+
+
 
           <Route path ="/" >
             <Login />
           </Route>
 
           <Sidebar />
-          <SearchResults searchHandler={this.searchHandler}/>
+         
+        
         </Switch>
       </div>
     </Router>

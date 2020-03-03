@@ -9,6 +9,7 @@ class Recommended extends React.Component {
 
 
     render() { 
+        
         return (  
             <div className = 'recommended-component'> 
                 {this.fourSongs().map((song) =>{
