@@ -1,14 +1,25 @@
-import React from 'react';
+import React from "react";
+import "./Player.css";
+class NowPlaying extends React.Component{
+
+    render(){
+        return(
+
+        <div>working on now playing</div>
 
 
-class NowPlaying extends React.Component {
-    render() { 
-        return (  
-            <div className = 'nowplaying-component'> this is the Now Playing component</div>
+
+            
+        )
 
 
-        );
+
+
+
     }
+
+
+
 }
- 
+
 export default NowPlaying;

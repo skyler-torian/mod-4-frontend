@@ -4,6 +4,12 @@
 html{
   background-color: #514f5c;
 }
+.side-bar{
+  
+  text-align: left;
+  margin-bottom: 1rem;
+
+}
 
 .song-card{
   text-align: center;

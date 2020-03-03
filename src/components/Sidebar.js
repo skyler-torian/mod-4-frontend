@@ -3,7 +3,7 @@ import React from 'react'
 class Sidebar extends React.Component {
     render() {
         return(
-            <div>
+            <div className = 'side-bar'>
                 <div>
                     <button className="button">Artists
                     </button>

@@ -1,24 +1,47 @@
-import React from 'react';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import './App.css';
 import HomeContainer from './containers/HomeContainer';
 import Login from './containers/Login'
 import Sidebar from './components/Sidebar'
 import SearchResults from './components/SearchResults'
 
-// import SignUpContainer from './containers/SignupContainer'
+import SignUpContainer from './containers/SignupContainer'
 
 class App extends React.Component {
 
   state ={
     songsArray:[],
+    
     searchText: ""
 
   }
 
   searchHandler = (event) => {
-    this.setState({
-      searchText: event.target.value})
-  }
+    event.preventDefault()
+    // this.setState({
+    //   searchText:
+    // })
+    let searchValue = event.target.firstElementChild.value
+    let convertedValue= searchValue.replace(/ /g,"%20")
+              fetch(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${convertedValue}`, {
+                "method": "GET",
+                "headers": {
+                  "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+                  "x-rapidapi-key": "c38ba6a2c0msh5f61bfe076d3a6ep195b44jsn034cfbf202fc"
+                }
+              })
+              
+              .then(response => response.json())
+              .then(data => console.log(data))
+              
+              }
+  
 
 
 
@@ -32,20 +55,35 @@ componentDidMount(){
 
 } 
 
+
  render(){
 
   return (
-    <div>
-      <div className ='App'></div>
-      {/* <SignUpContainer /> */}
-      <Login />
-      <HomeContainer songsArray={this.state.songsArray} searchHandler={this.searchHandler}/>
-      <Sidebar />
-      <SearchResults searchHandler={this.searchHandler}/>
-    </div>
+    <Router>
+      
+      <div className ='App'>
+        <Switch>
+          <Route path ="/signup">
+            <SignUpContainer />
+          </Route>
+
+          <Route path ="/home"> 
+            <HomeContainer songsArray={this.state.songsArray} searchHandler={this.searchHandler}/>
+          </Route>
+
+          <Route path ="/" >
+            <Login />
+          </Route>
+
+          <Sidebar />
+          <SearchResults searchHandler={this.searchHandler}/>
+        </Switch>
+      </div>
+    </Router>
     );
   }
 }
+
 
  
 export default App;

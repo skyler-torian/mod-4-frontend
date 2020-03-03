@@ -14,7 +14,9 @@ class Recommended extends React.Component {
                 {this.fourSongs().map((song) =>{
                     return <SongCard  
                     key ={song.id}
-                    songObj = {song} />
+                    songObj = {song} 
+                    clickofsong ={this.props.clickofsong}
+                    />
                     
                 })
             }
