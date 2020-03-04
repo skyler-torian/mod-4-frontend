@@ -9,13 +9,13 @@ import SearchResults from '../components/SearchResults'
 class HomeContainer extends React.Component {
 
     render() { 
-        debugger
+      debugger
         return ( 
             <div className = 'home-container'>
                 <SearchBar searchHandler={this.props.searchHandler}/>
                 <Header />
                
-                {this.props.songState.searchedSongs?
+                {this.props.songState.searchedSongs ?
                 
                 <SearchResults songArray ={this.props.songState.searchedSongs}/>:<Recommended songsArray ={this.props.songState.songsArray}/>
                 

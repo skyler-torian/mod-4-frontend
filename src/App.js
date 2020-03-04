@@ -90,15 +90,16 @@ componentDidMount(){
           </Route>
 
           <Route path ="/home"> 
-          
             <HomeContainer songState={this.state} searchHandler={this.searchHandler}/>
           </Route>
          
 
 
 
-          <Route path ="/" >
-            <Login updateCurrentUser={this.updateCurrentUser} currentUser={this.state.currentUser}/>
+          <Route path ="/" render={() => {
+          return this.state.currentUser ? <HomeContainer currentUser={this.state.currentUser}/> : <Login updateCurrentUser={this.updateCurrentUser} currentUser={this.state.currentUser}/>
+          }}>
+        
           </Route>
 
           <Sidebar />
