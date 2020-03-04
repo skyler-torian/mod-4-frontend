@@ -27,7 +27,22 @@ class App extends React.Component {
     this.setState({
       currentUser: event.target.firstElementChild.value
     })
+    
+      fetch('http://localhost:3000/fakelogin', {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+          },
+          body: JSON.stringify({
+              username: event.target.firstElementChild.value
+          })
+      }).then(res => res.json())
+      .then(data => console.log(data))
+          
   }
+  
+
 
   searchHandler = (event) => {
     event.preventDefault()
@@ -88,7 +103,7 @@ componentDidMount(){
 
 
           <Route path ="/" >
-            <Login updateCurrentUser={this.updateCurrentUser}/>
+            <Login updateCurrentUser={this.updateCurrentUser} currentUser={this.state.currentUser}/>
           </Route>
 
           <Sidebar />
