@@ -24,11 +24,7 @@ class App extends React.Component {
 
   updateCurrentUser = (event) => {
     event.preventDefault()
-    this.setState({
-      currentUser: event.target.firstElementChild.value
-    })
-    
-      fetch('http://localhost:3000/fakelogin', {
+        fetch('http://localhost:3000/fakelogin', {
           method: "POST",
           headers: {
               "Content-Type": "application/json",
@@ -38,11 +34,10 @@ class App extends React.Component {
               username: event.target.firstElementChild.value
           })
       }).then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => this.setState({
+        currentUser: data}))}
           
-  }
-  
-
+      
 
   searchHandler = (event) => {
     event.preventDefault()
