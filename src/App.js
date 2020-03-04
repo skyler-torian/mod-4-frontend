@@ -10,6 +10,7 @@ import './App.css';
 import HomeContainer from './containers/HomeContainer';
 import Login from './containers/Login'
 import Sidebar from './components/Sidebar'
+import LibraryContainer from "./containers/Library_Container";
 
 import SignUpContainer from './containers/SignupContainer'
 
@@ -19,7 +20,9 @@ class App extends React.Component {
     songsArray:[],
     searchedSongs:null,
     searchText: "",
-    currentUser: null
+    currentUser: null,
+    userSongs: null,
+    activeSong:null
   }
 
   updateCurrentUser = (event) => {
@@ -42,9 +45,7 @@ class App extends React.Component {
   searchHandler = (event) => {
     event.preventDefault()
 
-        // this.setState({
-    //   searchText:
-    // })
+   
     let searchValue = event.target.firstElementChild.value
     let convertedValue= searchValue.replace(/ /g,"%20")
               fetch(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${convertedValue}`, {
@@ -76,6 +77,26 @@ componentDidMount(){
 
 
 } 
+  fetchUserSongs =()=>{
+    fetch('http://localhost:3000/saved_songs')
+    .then(resp => resp.json())
+    .then(songsArray => {
+      this.setState({
+        userSongs: songsArray
+      })
+    })
+      
+
+
+  }
+  handlePlayOfSong=(event)=>{
+    debugger
+    this.setState({
+      activeSong: event.target.parentElement.dataset.mp3 
+    })
+
+  }
+
 
 
  render(){
@@ -90,10 +111,15 @@ componentDidMount(){
           </Route>
 
           <Route path ="/home"> 
-            <HomeContainer songState={this.state} searchHandler={this.searchHandler}/>
+          
+        <HomeContainer activeSong={this.state.activeSong}handlePlayOfSong={this.handlePlayOfSong}clickSongs = {this.fetchUserSongs} songState={this.state} searchHandler={this.searchHandler}/>
           </Route>
-         
-
+         {
+           this.state.userSongs? 
+          <Route path ="/library/songs"> 
+            <LibraryContainer  userSongs ={this.state.userSongs}/>
+          </Route>:<Redirect to= '/home'/>
+         }
 
 
           <Route path ="/" render={() => {

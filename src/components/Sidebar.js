@@ -1,7 +1,8 @@
 import React from 'react'
-
+import {Link} from "react-router-dom";
 class Sidebar extends React.Component {
     render() {
+        console.log(this.props)
         return(
             <div className = 'side-bar'>
                 <div>
@@ -9,8 +10,10 @@ class Sidebar extends React.Component {
                     </button>
                 </div>
                 <div>
-                    <button className="button">Songs
+                <Link to="/library/songs">
+                    <button onClick={this.props.clickSongs} className="button">Songs
                     </button>
+                </Link>
                 </div>
             </div>
         )
