@@ -9,6 +9,7 @@ class SearchResults extends React.Component {
         
         return(
             <div>
+               
                 <table className = "search-info">
                     {this.props.songArray.map((song)=>{
                         

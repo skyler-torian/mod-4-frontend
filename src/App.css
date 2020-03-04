@@ -4,6 +4,11 @@
 html{
   background-color: #1f1d1d;
 }
+
+.current-user{
+  color: white 
+}
+
 .side-bar{
   
   text-align: left;

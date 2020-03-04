@@ -11,7 +11,7 @@ import HomeContainer from './containers/HomeContainer';
 import Login from './containers/Login'
 import Sidebar from './components/Sidebar'
 import LibraryContainer from "./containers/Library_Container";
-
+import LoggedIn from './components/LoggedIn'
 import SignUpContainer from './containers/SignupContainer'
 
 class App extends React.Component {
@@ -94,7 +94,7 @@ componentDidMount(){
 
   }
   handlePlayOfSong=(event)=>{
-    debugger
+    
     this.setState({
       activeSong: event.target.parentElement.dataset.mp3 
     })
@@ -121,7 +121,7 @@ componentDidMount(){
           <Route exact path ="/home" render={()=>{
             return !this.state.currentUser?
             <Redirect to ='/'/>:
-            <HomeContainer activeSong={this.state.activeSong}handlePlayOfSong={this.handlePlayOfSong}clickSongs = {this.fetchUserSongs} songState={this.state} searchHandler={this.searchHandler}/>
+            <HomeContainer activeSong={this.state.activeSong}handlePlayOfSong={this.handlePlayOfSong}clickSongs = {this.fetchUserSongs} songState={this.state} searchHandler={this.searchHandler} currentUser={this.state.currentUser}/>
             
           }}> 
           </Route>
@@ -129,7 +129,7 @@ componentDidMount(){
 
 
           <Route exact path ="/" render={() => {
-             debugger
+             
             return this.state.currentUser ?
             <Redirect
             to={{
