@@ -16,7 +16,7 @@ class Recommended extends React.Component {
                     return <SongCard  
                     key ={song.id}
                     songObj = {song} 
-                    clickofsong ={this.props.clickofsong}
+                    handlePlayOfSong ={this.props.handlePlayOfSong}
                     />
                     
                 })

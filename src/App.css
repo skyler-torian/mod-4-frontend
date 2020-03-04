@@ -2,12 +2,26 @@
   text-align: center;
 }
 html{
-  background-color: #514f5c;
+  background-color: #1f1d1d;
 }
 .side-bar{
   
   text-align: left;
   margin-bottom: 1rem;
+
+}
+.search-info{
+  text-align: center;
+}
+table {
+  font-family: arial, sans-serif;
+  
+}
+td {
+  border: 1px solid grey;
+  text-align: left;
+  padding: 8px;
+  color:white;
 
 }
 
@@ -24,15 +38,17 @@ html{
 }
 
 .artist{
-  color: rgb(255, 255, 255);
+  color: grey;
 }
 
 .cover-art{
     justify-self: auto;
     height: 100px;
     width: auto;
-  
-
+}
+.like-button{
+  background-color: #1f1d1d;
+  border: 0px;
 }
 
 .header{
