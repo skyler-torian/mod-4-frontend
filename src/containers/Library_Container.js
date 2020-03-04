@@ -1,16 +1,17 @@
 import React from 'react';
 import SideBar from '../components/Sidebar';
 import NowPlaying from '../components/NowPlaying'
+import LoggedIn from '../components/LoggedIn'
 class LibraryContainer extends React.Component {
     render() { 
-        debugger
+        
         return ( 
             <div>
                 <header className ='header'>Library</header>
-                <SideBar />
+                <LoggedIn currentUser={this.props.currentUser}/>
                 <table>
                     {this.props.userSongs.map((song)=>{
-                        debugger
+                    
                         return <tr id ={song.id} data-artist={song.artist.name} data-title ={song.title} data-duration ={song.duration} data-link={song.link}
                         data-album={song.album.title} data-img ={song.album.cover_small}>
                                     <td><button className = "like-button" onClick={this.props.clickLike} >❤️</button></td>

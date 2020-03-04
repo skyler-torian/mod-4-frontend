@@ -5,6 +5,7 @@ import Recommended from '../components/Recommended'
 import NowPlaying from '../components/NowPlaying'
 import Sidebar from '../components/Sidebar'
 import SearchResults from '../components/SearchResults'
+import LoggedIn from '../components/LoggedIn'
 
 class HomeContainer extends React.Component {
 
@@ -24,7 +25,7 @@ class HomeContainer extends React.Component {
         let user_id = props.songState.currentUser.id
 
         const newObject={title:title, artist: artist, duration:duration,album:album, cover_art:img, link:link}
-        debugger
+       
       fetch(`http://localhost:3000/songs/${user_id}`,{
 
         method:'POST',
@@ -52,13 +53,14 @@ class HomeContainer extends React.Component {
             <div className = 'home-container'>
                 <SearchBar searchHandler={this.props.searchHandler}/>
                 <Header />
+                <LoggedIn currentUser={this.props.currentUser.name}/>
                
                 {this.props.songState.searchedSongs ?
                 
-                <SearchResults handlePlayOfSong={this.props.handlePlayOfSong} clickLike ={this.clickLike}songArray ={this.props.songState.searchedSongs}/>:<Recommended handlePlayOfSong={this.props.handlePlayOfSong}songsArray ={this.props.songState.songsArray} />
+                <SearchResults handlePlayOfSong={this.props.handlePlayOfSong} clickLike ={this.clickLike}songArray ={this.props.songState.searchedSongs} currentUser={this.props.currentUser.name}/>:<Recommended handlePlayOfSong={this.props.handlePlayOfSong}songsArray ={this.props.songState.songsArray} />
                 
                 }
-                <Sidebar clickSongs = {this.props.clickSongs}/>
+                <Sidebar clickSongs={this.props.clickSongs} currentUser={this.props.currentUser.name}/>
                
                 <NowPlaying songsrc = {this.props.activeSong}/> 
                 
