@@ -24,11 +24,14 @@ class Login extends React.Component {
 
     render() {
         return(
-            <form onSubmit={this.props.updateCurrentUser}>
-            <input type="text" ref="username" placeholder="Enter Username" />
-            {/* <input type="text" ref="password" placeholder="Enter Password" /> */}
-            <input class="button" type="submit"/>
-            </form>
+            <div>
+                <header className= 'header'> Login</header>
+
+                <form className ='login'onSubmit={this.props.updateCurrentUser}>
+                    <input type="text" ref="username" placeholder="Enter Username" />
+                    <input className="ui tiny button"type="submit"/>
+                </form>
+            </div>
         )
     }
 }
