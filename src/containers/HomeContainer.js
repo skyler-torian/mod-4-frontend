@@ -14,16 +14,18 @@ class HomeContainer extends React.Component {
     }
 
     clickLike = (event)=>{
+        let props = this.props
         let title = event.target.parentElement.parentElement.dataset.title
         let artist = event.target.parentElement.parentElement.dataset.artist
         let album = event.target.parentElement.parentElement.dataset.album
         let link = event.target.parentElement.parentElement.dataset.link
         let img = event.target.parentElement.parentElement.dataset.img
         let duration = event.target.parentElement.parentElement.dataset.duration
+        let user_id = props.songState.currentUser.id
 
         const newObject={title:title, artist: artist, duration:duration,album:album, cover_art:img, link:link}
         debugger
-      fetch('http://localhost:3000/songs',{
+      fetch(`http://localhost:3000/songs/${user_id}`,{
 
         method:'POST',
         headers:{

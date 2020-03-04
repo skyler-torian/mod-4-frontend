@@ -38,7 +38,8 @@ class App extends React.Component {
           })
       }).then(res => res.json())
       .then(data => this.setState({
-        currentUser: data}))}
+        currentUser: data}))
+      }
           
       
 
@@ -78,9 +79,12 @@ componentDidMount(){
 
 } 
   fetchUserSongs =()=>{
-    fetch('http://localhost:3000/saved_songs')
+    
+    let user_id = this.state.currentUser.id
+    fetch(`http://localhost:3000/saved_songs/${user_id}`)
     .then(resp => resp.json())
     .then(songsArray => {
+      
       this.setState({
         userSongs: songsArray
       })
@@ -106,27 +110,43 @@ componentDidMount(){
       
       <div className ='App'>
         <Switch>
-          <Route path ="/signup">
+
+          <Route exact path ="/signup">
             <SignUpContainer />
           </Route>
 
-          <Route path ="/home"> 
-          
-        <HomeContainer activeSong={this.state.activeSong}handlePlayOfSong={this.handlePlayOfSong}clickSongs = {this.fetchUserSongs} songState={this.state} searchHandler={this.searchHandler}/>
+
+
+         
+          <Route exact path ="/home" render={()=>{
+            return !this.state.currentUser?
+            <Redirect to ='/'/>:
+            <HomeContainer activeSong={this.state.activeSong}handlePlayOfSong={this.handlePlayOfSong}clickSongs = {this.fetchUserSongs} songState={this.state} searchHandler={this.searchHandler}/>
+            
+          }}> 
           </Route>
-         {
-           this.state.userSongs? 
-          <Route path ="/library/songs"> 
-            <LibraryContainer  userSongs ={this.state.userSongs}/>
-          </Route>:<Redirect to= '/home'/>
-         }
 
 
-          <Route path ="/" render={() => {
-          return this.state.currentUser ? <HomeContainer currentUser={this.state.currentUser}/> : <Login updateCurrentUser={this.updateCurrentUser} currentUser={this.state.currentUser}/>
+
+          <Route exact path ="/" render={() => {
+             debugger
+            return this.state.currentUser ?
+            <Redirect
+            to={{
+              pathname: "/home",
+              state: {currentuser:this.state.currentUser }
+            }}
+            /> : <Login updateCurrentUser={this.updateCurrentUser} currentUser={this.state.currentUser}/>
           }}>
         
           </Route>
+          {
+            this.state.userSongs? 
+            <Route exact path ="/library/songs"> 
+              <LibraryContainer  userSongs ={this.state.userSongs}/>
+            </Route>:<Redirect to= '/home'/>
+          }
+
 
           <Sidebar />
          

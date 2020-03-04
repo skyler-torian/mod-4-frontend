@@ -6,7 +6,7 @@ import Sidebar from './Sidebar'
 
 class SearchResults extends React.Component {
     render() {
-        debugger
+        
         return(
             <div>
                 <table className = "search-info">
