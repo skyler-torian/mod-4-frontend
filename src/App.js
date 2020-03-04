@@ -18,7 +18,15 @@ class App extends React.Component {
   state ={
     songsArray:[],
     searchedSongs:null,
-    searchText: ""
+    searchText: "",
+    currentUser: null
+  }
+
+  updateCurrentUser = (event) => {
+    event.preventDefault()
+    this.setState({
+      currentUser: event.target.firstElementChild.value
+    })
   }
 
   searchHandler = (event) => {
@@ -80,7 +88,7 @@ componentDidMount(){
 
 
           <Route path ="/" >
-            <Login />
+            <Login updateCurrentUser={this.updateCurrentUser}/>
           </Route>
 
           <Sidebar />
