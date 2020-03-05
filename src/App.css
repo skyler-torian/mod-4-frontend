@@ -16,7 +16,12 @@ html{
 
 }
 .search-info{
+  margin-top: 20px;
   text-align: center;
+  margin-left: 150px;
+}
+.current-user{
+  margin:20px;
 }
 table {
   font-family: arial, sans-serif;
@@ -28,6 +33,9 @@ td {
   padding: 8px;
   color:white;
 
+}
+.search-bar{
+  margin-top: 20px;
 }
 .login{
 margin:20px;
@@ -63,9 +71,55 @@ body{
 }
 
 .header{
-  margin: 200px;
-  margin-bottom: 0;
+  padding: 100px;
+  padding-bottom: 0;
   font-size: 3rem;
   font-weight: bold;
   color:white;
+}
+.player{
+margin-top: 300px;
+
+}
+.library-table{
+  padding-left: 12rem;
+}
+.sidenav {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+.sidebar-header{
+
+    color:white;
+}
+
+.sidenav button {
+  padding: 6px 8px 6px 16px;
+  padding-right: 75px;
+  text-decoration: none;
+  font-size: 25px;
+  background-color: #111 ;
+  border: none;
+  color:white;
+  display: block;
+  margin-top: 20px;
+
+}
+
+.sidenav button:hover {
+  background-color: #f1f1f1;
+  color: #111;
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
 }

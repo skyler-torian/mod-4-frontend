@@ -10,7 +10,7 @@ class SearchBar extends React.Component {
         
         return (
         <div>
-            <form onSubmit={this.props.searchHandler}>
+            <form className="search-bar"onSubmit={this.props.searchHandler}>
                 <input type="text" placeholder="Search..." className="search-bar" /> 
                 <input type="submit" className="submit" />
             </form>

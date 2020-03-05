@@ -4,7 +4,12 @@ class Sidebar extends React.Component {
     render() {
         console.log(this.props)
         return(
-            <div className = 'side-bar'>
+            <div className = 'sidenav'>
+                <h2 className ='sidebar-header'>Library</h2>
+                <Link to="/home">
+                    <button  className="button">Home
+                    </button>
+                </Link>
                 <div>
                     <button className="button">Artists
                     </button>

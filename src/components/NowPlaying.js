@@ -10,6 +10,7 @@ class NowPlaying extends React.Component{
             { this.props.songsrc?
                 
                 <audio controls
+                className ='player'
                 ref="audio_tag"
                 id="audio-player"
                 src= {this.props.songsrc}
@@ -18,6 +19,7 @@ class NowPlaying extends React.Component{
                 muted={!this.props.paused}
                 />: 
                 <audio controls
+                className ='player'
                 ref="audio_tag"
                 id="audio-player"
                 autoPlay

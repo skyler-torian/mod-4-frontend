@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
   Redirect
 } from "react-router-dom";
 import './App.css';
@@ -94,6 +93,7 @@ componentDidMount(){
 
   }
   handlePlayOfSong=(event)=>{
+    debugger
     
     this.setState({
       activeSong: event.target.parentElement.dataset.mp3 
@@ -143,7 +143,7 @@ componentDidMount(){
           {
             this.state.userSongs? 
             <Route exact path ="/library/songs"> 
-              <LibraryContainer  userSongs ={this.state.userSongs}/>
+              <LibraryContainer  handlePlayOfSong={this.handlePlayOfSong} userSongs ={this.state.userSongs}/>
             </Route>:<Redirect to= '/home'/>
           }
 
